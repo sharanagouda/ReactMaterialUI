@@ -1,7 +1,15 @@
 .App {
-  text-align: center;
+  display: flex;
+  flex: 1;
 }
 
+.mainContainer{
+  display: flex;
+  flex:1;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
