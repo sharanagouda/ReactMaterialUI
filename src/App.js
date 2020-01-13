@@ -1,17 +1,13 @@
 import React from 'react';
-import './App.css';
-import Button from '@material-ui/core/Button';
+import { Provider } from 'react-redux';
+import { store } from './config/Store';
+import Main from "./Main";
 
 function App() {
   return (
-    <div className="App">
-      <div className="mainContainer">
-        <p>sdkfhsd</p>
-      <Button variant="contained" color="primary">
-      Hello World
-    </Button>
-      </div>
-    </div>
+    <Provider store={store}>
+        <Main />
+    </Provider>
   );
 }
 
