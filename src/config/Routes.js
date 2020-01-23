@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Route,Switch, Link } from "react-router-dom";
 import Home from "../container/Home";
 import SignUp from "../container/SignUp";
 import Login from "../container/Login";
+import MainHome from "../container/MainHome";
+import AxiosSubscriber from "../RxJS_Test";
+
 
 class Routes extends Component {
   render() {
@@ -10,10 +13,11 @@ class Routes extends Component {
       <Router>
         <div>
           <Switch>
-          <Route path ="/" exact component={Home}/>
+          <Route path ="/" exact component={MainHome} />
           <Route path="/main" exact component={Home}/>
           <Route path="/login" exact component={Login}/>
           <Route path="/signup" exact component={SignUp}/>
+          <Route path="/axiosSubscriber" exact component={AxiosSubscriber} />
           <Route component={PageNotFound} />
           </Switch>
         </div>
