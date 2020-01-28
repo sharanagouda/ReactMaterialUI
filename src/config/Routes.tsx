@@ -6,10 +6,12 @@ import Login from "../container/Login";
 import MainHome from "../container/MainHome";
 import AxiosSubscriber from "../RxJS_Test";
 import SearchFlight from "../container/SearchFlight"
-import {AppBar, Toolbar, Typography, IconButton, withStyles} from '@material-ui/core';
+import {AppBar, Toolbar, Typography, IconButton, withStyles, makeStyles} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import { Theme } from "@material-ui/core/styles";
+import TodoHomePage from "../container/Todo/TodoHomePage";
 
-const styles = theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     flexGrow: 1,
   },
@@ -19,12 +21,11 @@ const styles = theme => ({
   title: {
     flexGrow: 1,
   },
-});
+}));
 
 
-class Routes extends Component {
-  render() {
-    const {classes} = this.props;
+function Routes(){
+const classes = useStyles();
     return (
       <Router>
         <div className={classes.root}>
@@ -45,12 +46,12 @@ class Routes extends Component {
               <Route path="/signup" exact component={SignUp}/>
               <Route path="/searchflight" exact component={SearchFlight}/>
               <Route path="/axiosSubscriber" exact component={AxiosSubscriber} />
+              <Route path="./TodoHomePage" exact component={TodoHomePage} />
               <Route component={PageNotFound} />
           </Switch>
         </div>
       </Router>
     );
-  }
 }
 
 const PageNotFound =()=>(
@@ -63,4 +64,4 @@ const PageNotFound =()=>(
         </div>
       )
 
-export default withStyles(styles)(Routes);
+export default Routes;
