@@ -1,62 +1,62 @@
 import React, { Component} from 'react';
-import Button from '@material-ui/core/Button';
+import {Button, Grid, Paper, Typography, withStyles, Avatar} from '@material-ui/core';
 import {connect} from "react-redux";
-import {fetchUserData } from "../../actionCreators/products.actionCreator";
-import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import {compose} from "redux";
+import {fetchUserData, getUsers } from "../../actionCreators/products.actionCreator";
+import { fetchUser } from "../../actions";
 
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
-import ImageIcon from '@material-ui/icons/Image';
-import WorkIcon from '@material-ui/icons/Work';
-import BeachAccessIcon from '@material-ui/icons/BeachAccess';
-
-const useStyles = makeStyles(theme => ({
+const styles = theme => ({
   root: {
-    width: '100%',
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
+    flexGrow: 1,
+    overflow: 'hidden',
+    padding: theme.spacing(0, 3),
   },
-}));
-
+  paper: {
+    maxWidth: 600,
+    margin: `${theme.spacing(1)}px auto`,
+    padding: theme.spacing(2),
+    backgroundColor:"lightblue"
+  },
+});
 
 class Home extends Component{
   
   constructor(props){
     super(props);
     this.state = {
+
     }
-    
   }
 
   componentDidMount() {
     this.props.handleDefaultNewsRequest();
+    this.props.handleUserRequest();
+    this.props.handleUserRequestRx();
  }
 
   render(){
-    const {app} =this.props;
-
+    const {app, classes} =this.props;
     console.log("ds ",app);
-
       return (
           <div className="App">
             <div className="mainContainer">
-              <p>sdkfhsd</p>
+              <p></p>
             <Button variant="contained" color="primary">
             Hello Home
           </Button>
               <div className="flex-two">
               {this.props.app.map((item) => (
-                     <List component="nav" key={item.id} aria-label="main mailbox folders" style={{ display:"flex",flex:1, flexDirection:"row"}}>
-                          <ListItemAvatar>
-                              <Avatar>
-                                <BeachAccessIcon />
-                              </Avatar>
-                            </ListItemAvatar>
-                           <ListItemText primary={item.title} secondary={item.body} />
-                     </List>
+                  <Paper className={classes.paper} key={item.id} >
+                    <Grid container wrap="nowrap" spacing={2}>
+                    <Grid item>
+                      <Avatar>W</Avatar>
+                    </Grid>
+                    <Grid item sm={12}>
+                      <Typography>{item.title}</Typography>
+                      <Typography>{item.body}</Typography>
+                    </Grid>
+                    </Grid>
+                  </Paper>
               ))}
               </div>
             </div>
@@ -69,6 +69,8 @@ const mapStateToProps = (state)=> ({
   app:state.app.products,
 })
 const mapDispatchToProps =(dispatch)=>({
-  handleDefaultNewsRequest : () => dispatch(fetchUserData())
+  handleDefaultNewsRequest : () => dispatch(fetchUserData()),
+  handleUserRequest : () => dispatch(getUsers()),
+  handleUserRequestRx : () => dispatch(fetchUser())
 }) 
-export default connect(mapStateToProps,mapDispatchToProps)(Home);
+export default  compose(withStyles(styles),connect(mapStateToProps,mapDispatchToProps)) (Home);

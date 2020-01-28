@@ -1,19 +1,24 @@
 import React, { Component} from 'react';
 import {connect} from "react-redux";
-import { makeStyles } from '@material-ui/core/styles';
-//Import components 
-
+import {compose} from "redux";
 import {InputText} from "../../components"
-import ReactJS_rxJS_test from "../../RxJS_Test";
-import Login from "../Login";
+import {AppBar, Toolbar, Typography, Button, IconButton, withStyles} from '@material-ui/core';
+import MenuIcon from '@material-ui/icons/Menu';
+// import ReactJS_rxJS_test from "../../RxJS_Test";
+// import Login from "../Login";
+import SearchFlight from "../SearchFlight";
 
-const useStyles = makeStyles(theme => ({
+const styles = theme => ({
   root: {
-    width: '100%',
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
+    flexGrow: 1,
   },
-}));
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+});
 
 
 class MainHome extends Component{
@@ -26,14 +31,15 @@ class MainHome extends Component{
   }
 
   componentDidMount() {
+    
  }
 
   render(){
-    const {app} =this.props;
+    const {classes} =this.props;
 
       return (
-          <div className="App">
-           <ReactJS_rxJS_test/>
+          <div className={classes.root}>
+           <SearchFlight/>
           </div>
         );
   }
@@ -43,4 +49,4 @@ const mapStateToProps = (state)=> ({
 })
 const mapDispatchToProps =(dispatch)=>({
 }) 
-export default connect(mapStateToProps,mapDispatchToProps)(MainHome);
+export default  compose(withStyles(styles),connect(mapStateToProps,mapDispatchToProps)) (MainHome);

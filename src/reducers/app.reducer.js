@@ -2,7 +2,7 @@ import {
     FETCH_USERDATA_PENDING,
     FETCH_USERDATA_SUCCESS,
     FETCH_USERDATA_ERROR
-  } from '../actionTypes';
+  } from '../model';
   
 const initialState = {
     pending: false,

@@ -6,7 +6,7 @@ import {
     REQUEST_LOGIN_FAIL,
     REQUEST_SIGNUP_FAIL,
     SET_REDIRECT_URL
-   } from "../actionTypes";
+   } from "../model";
 
    const initialState = {
        isLoggedIn: false,

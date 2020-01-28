@@ -3,7 +3,8 @@ import {
     fetchUserDataError,
     fetchUserDataSuccess
   } from '../actions';
-  
+  import axios from "axios";
+
 const error = "please try again"
 
   export function fetchUserData(dispatch) {
@@ -13,7 +14,7 @@ const error = "please try again"
       fetch('https://jsonplaceholder.typicode.com/posts')
         .then(res => res.json())
         .then(res => {
-          //console.log('sd ', res);
+          console.log('sd ', res);
           if (res.error) {
             throw res.error;
           }
@@ -38,4 +39,16 @@ const error = "please try again"
         dispatch(fetchUserDataError(error));
       }
     };
+  }
+
+
+  export function getUsers() {
+    return (dispatch) => {
+      axios.get('https://jsonplaceholder.typicode.com/posts')
+      .then(response => {
+        console.log("response data  ",response.data);
+        dispatch(fetchUserDataSuccess(response.data))}
+        )
+        .catch(error => dispatch(fetchUserDataError(error)))
+    }
   }

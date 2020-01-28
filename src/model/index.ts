@@ -1,3 +1,7 @@
+import { TodoAction }  from "./todo";
+export * from "./todo";
+export type Action = | TodoAction;
+
 export const REQUEST_LOGIN = "REQUEST_LOGIN";
 export const REQUEST_SIGNUP = "REQUEST_SIGNUP";
 export const REQUEST_LOGIN_SUCCESSFULL = "REQUEST_LOGIN_SUCSESSFULL";
@@ -8,3 +12,5 @@ export const SET_REDIRECT_URL = "SET_REDIRECT_URL";
 export const FETCH_USERDATA_PENDING = "FETCH_USERDATA_PENDING";
 export const FETCH_USERDATA_SUCCESS = "FETCH_USERDATA_SUCCESS";
 export const FETCH_USERDATA_ERROR = "FETCH_USERDATA_ERROR";
+export const FETCH_USER = "FETCH_USER";
+
