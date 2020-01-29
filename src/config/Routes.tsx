@@ -13,7 +13,7 @@ import TodoHomePage from "../container/Todo/TodoHomePage";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    flexGrow: 1,
+    flex: 1,
   },
   menuButton: {
     marginRight: theme.spacing(2),

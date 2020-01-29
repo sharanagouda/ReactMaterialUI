@@ -8,8 +8,11 @@ import { makeStyles } from "@material-ui/styles";
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    flexGrow: 1,
+    flex: 1,
     overflow: 'hidden',
+  },
+  paper: {
+    textAlign: 'center',
   },
   search: {
     display:"flex",
@@ -58,6 +61,30 @@ function SearchFlight(){
               <SearchIcon />
             </div>
           </div>
+          <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Paper className={classes.paper}>xs=12</Paper>
+              </Grid>
+              <Grid item xs={6}>
+                <Paper className={classes.paper}>xs=6</Paper>
+              </Grid>
+              <Grid item xs={6}>
+                <Paper className={classes.paper}>xs=6</Paper>
+              </Grid>
+              <Grid item xs={3}>
+                <Paper className={classes.paper}>xs=3</Paper>
+              </Grid>
+              <Grid item xs={3}>
+                <Paper className={classes.paper}>xs=3</Paper>
+              </Grid>
+              <Grid item xs={3}>
+                <Paper className={classes.paper}>xs=3</Paper>
+              </Grid>
+              <Grid item xs={3}>
+                <Paper className={classes.paper}>xs=3</Paper>
+              </Grid>
+        </Grid>
+        
           </div>
         );
 }

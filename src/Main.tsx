@@ -6,7 +6,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Routes from './config/Routes';
 // import ReactJS_rxJS_test from "../../RxJS_Test";
 // import Login from "../Login";
-
+import {withRoot} from "./utils/withRoot"
 
 
 class Main extends Component{
@@ -19,7 +19,7 @@ class Main extends Component{
   render(){
 
       return (
-          <div style={{flex:1, display:"flex"}}>
+          <div style={{display:"flex",flex:1, backgroundColor:"lightblue",}}>
                <Routes/>
           </div>
        
@@ -27,4 +27,4 @@ class Main extends Component{
   }
 }
 
-export default  Main;
+export default Main;
